@@ -136,19 +136,20 @@ d &e&f\\ \hline
 
 
 
-\section{Prvi naslov}
+\section{Algoritam}
 \label{sec:naslov1}
 
+Pre početka razmene, uspostavljaju se 2 javno poznata broja: $n$ i $g$.
+\begin{itemize}
 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
+    \item $n$ - opseg u kom računamo, preporuka je da to bude broj dužine 3072 bita (broj reda $10^{925}$)[ref needed]
+    \item $g$ - generator, mora da bude primitivni koren od $n$
 
+\end{itemize}
+
+\emph{Primitivni koren}: $g$ je primitivni koren po modulu $n$ ako za svaki celi broj $a$ koji je uzajamno prost sa $n$ postoji celi broj $k$ tako da je $g^k \equiv a \mod n$. Takvo $k$ se naziva indeks ili diskretni logaritam od $a$ sa odnovom $g \mod n$.
+
+mod funkcija ne radi, verovatno treba da se doda neki package ? 
 
 \subsection{Prvi podnaslov}
 \label{subsec:podnaslov1}
