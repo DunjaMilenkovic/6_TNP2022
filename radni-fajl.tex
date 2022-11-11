@@ -45,7 +45,7 @@ Kriptografija je oblast koja razvija tehnike koje omogućavaju zaštićenu i efi
 \section{Osnove Diffie-Hellman algoritma}
 Glavna klasifikacija kriptografskih algoritama deli ih na kriptografiju privatnog ključa (eng. secret key cryptography), kriptografiju javnog ključa (eng. public key cryptography) i heš funkcije (eng. hash functions) \cite{cryptography}. Kako je Diffie-Hellman protokol predstavnik asimetrične kriptografije, nju ćemo posebno izdvojiti i definisati.
 
-\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šivrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom "Novi pravci u kriptografiji" (eng. "New Directions in Cryptography"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
+\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šivrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom ,,Novi pravci u kriptografiji‘‘ (eng. "New Directions in Cryptography"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
 
 U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi dva ključa i tako omogućava korisnicima bezbednu komunikaciju bez potrebe za deljenjem privatnog ključa. Takođe, simetrična kriptografija omogućava postojanje digitalnih potpisa tj. autentifikacije pošiljaoca poruke. Osnovni princip na kome funkcioniše jeste korišćenje tzv. jednosmernih matematičkih funkcija (eng. one-way functions), koje se lako izračunavaju u jednom smeru, dok isto ne važi i za njihove inverzne funkcije \cite{cryptography}. Na ovaj način omogućeno je postojanje javnog ključa, bez rizika da ga treći korisnik koji nije predviđen kao deo mreže može zloupotrebiti. 
 
@@ -267,32 +267,27 @@ Ovde pišem tekst.
 Ovde pišem tekst. 
 Ovde pišem tekst. 
 
-\section{n-ti naslov}
-\label{sec:naslovN}
+\section{Primene na bezbednosnim protokolima}
+\label{sec:primene}
 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
+Diffie-Hellman algoritam ima široku primenu na različite internet protokole, od kojih su najvažniji SSL, SSH i IPSec, koji će biti detaljnije opisani u nastavku.
 
-\subsection{... podnaslov}
-\label{subsec:podnaslovK}
+\subsection{SSL}
+\label{subsec:ssl}
 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
+SSL (skraćeno od eng. Secure Socket Layer) je protokol koji omogućava bezbednu onlajn komunikaciju između veb servera i pretraživača, koristeći upravo Diffie-Hellman algoritam \cite{use}. Sastoji se iz dva sloja: donjeg i gornjeg. Donji sloj omogućava privatnu i sigurnu komunikaciju koristeći TCP (skraćeno od eng. Transmission Control Protocol), koji se zasniva samo na simetričnoj kriptografiji. Upravo u gornjem sloju, koji se naziva i protokol rukovanja (eng. handshake protocol), koristi se Diffie-Hellman algoritam. On omogućava autentifikaciju servera klijentu, kao i korišćenje javnog ključa za ,,dogovaranje‘‘) o načinu šifrovanja i razmene ključeva koju će koristiti za komunikaciju \cite{use}. 
 
-\subsection{... podnaslov}
-\label{subsec:podnaslovM}
+Jedna od najznačajnijih primena SSL protokola odnosi se na osiguravanje onlajn transakcija kao što je npr. elektronsko bankarstvo.
 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
+\subsection{SSH}
+\label{subsec:ssh}
+
+SSH (skraćeno od eng. Secure Shell) je protokol koji se koristi za osiguravanje internet veze između dva računara \cite{use}. Na ovaj način, omogućeno je bezbedno prijavljivanje sa jednog računara na neki drugi, udaljeni računar, vršenje komandi na udaljenom računaru, kao i prenos podataka između njih. Šifrovanje se odvija na sličan način kao u SSL protokolu.
+
+\subsection{IPSec}
+\label{subsec:ipsec}
+
+IPSec (skraćeno od eng. Internet Protocol Security) je protokol koji obezbeđuje komunikaciju između dve jedinice povezane IP mrežom \cite{use}. Dok prethodna dva protokola štite samo saobraćaj koji se odvija preko njih tj. njihovih aplikacija, IPSec funkcioniše za sve konekcije ostvarene između bilo koja dva računara u okviru IP mreže \cite{use}. Drugim rečima, IPSec podrzumeva transparentnu komunikaciju, u kojoj ni korisnici ni aplikacija ne moraju znati ništa o šifrovanju veze, što ga dovodi u prednost u odnosu na prethodno navedene protokole.
 
 \section{Poslednji naslov}
 \label{sec:naslovM}
@@ -337,6 +332,8 @@ Ovde pišem zaključak.
 \bibitem{cryptography} Gary C. Kessler. \emph{An Overview of Cryptography}, 2015.
 
 \bibitem{Diffie-Hellman} Maryam Ahmed, Baharan Sanjabi, Difo Aldiaz, Amirhossein Rezaei, Habeeb Omotunde. \emph{Diffie-Hellman and Its Application in Security Protocols}, International Journal of Engineering Science and Innovative Technology (IJESIT), 2012.
+
+\bibitem{use} David A. Carts. \emph{A Review of the Diffie-Hellman Algorithm and its Use in Secure Internet Protocols}, SANS Institute, 2001.
 
 \bibitem{logjam} Adrian, David; et al. (October 2015). \emph{Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice}
 
