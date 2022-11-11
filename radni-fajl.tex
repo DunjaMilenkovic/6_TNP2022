@@ -25,7 +25,7 @@
 
 \title{Diffie-Hellman algoritam\\ \small{Seminarski rad u okviru kursa\\Tehničko i naučno pisanje\\ Matematički fakultet}}
 
-\author{Dunja Milenkovic\\ mi22056@alas.matf.bg.ac.rs\and Jana Vukovic\\mi22124@alas.matf.bg.ac.rs\and Lazar Nikolic\\mi22164@alas.matf.bg.ac.rs\and Sofija Janevska\\mi22035@alas.matf.bg.ac.rs }
+\author{Dunja Milenković\\ mi22056@alas.matf.bg.ac.rs\and Jana Vuković\\mi22124@alas.matf.bg.ac.rs\and Lazar Nikolić\\mi22164@alas.matf.bg.ac.rs\and Sofija Janevska\\mi22035@alas.matf.bg.ac.rs }
 \date{15.~novembar 2022.}
 \maketitle
 
@@ -40,14 +40,14 @@ U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite paž
 \label{sec:uvod}
 Sve rasprostranjenija upotreba interneta širom sveta donosi sa sobom, kako značajne prednosti u načinu istraživanja, rada, povezivanja i sl. tako i povećan rizik od nebezbedne komunikacije i razmene podataka. Bilo da se radi o individualnim, privatnim razmenama informacija između ljudi ili rada nekih od najvećih državnih institucija, bezbedna i neometana interakcija i komunikacija među korisnicima na internetu je od presudnog značaja. Glavni problem nastaje kada spoljni korisnik koji nije predviđen kao deo veze pokuša da je prekine i dođe do određenih informacija koje su originalno bile namenjene jednom od povezanih korisnika. Upravo rešavanjem ovakvih problema bavi se \textbf{kriptografija}.
 
-Kriptografija je oblast koja razvija tehnike koje omogućavaju zaštićenu i efikasnu digitalnu komunikaciju. Bez nje, komunikacija nebezbednim i nepoverljivim kanalima, što uključuje sve vrste mreža, a pogotovo internet, ne bi bila moguća. U ovom radu bavićemo se jednom od tehnika kriptografije koja se naziva \textbf{Diffie-Hellman algoritam} tj. \textbf{Diffie-Hellman protokol} i predstavićemo način rada algoritma, njegova osnovna svojstva, primene, prednosti i mane.
+Kriptografija je oblast koja razvija tehnike koje omogućavaju zaštićenu i efikasnu digitalnu komunikaciju \cite{cryptography}. Bez nje, komunikacija nebezbednim i nepoverljivim kanalima, što uključuje sve vrste mreža, a pogotovo internet, ne bi bila moguća. U ovom radu bavićemo se jednom od tehnika kriptografije koja se naziva \textbf{Diffie-Hellman algoritam} tj. \textbf{Diffie-Hellman protokol} i predstavićemo način rada algoritma, njegova osnovna svojstva, primene, prednosti i mane.
 
-\section{Asimetrična kriptografija i osnove Diffie-Hellman algoritma}
-Glavna klasifikacija kriptografskih algoritama deli ih na simetričnu kriptografiju, asimetričnu kriptografiju i heš funkcije; kako je Diffie-Hellman protokol predstavnik asimetrične kriptografije, nju ćemo posebno izdvojiti i definisati.
+\section{Osnove Diffie-Hellman algoritma}
+Glavna klasifikacija kriptografskih algoritama deli ih na kriptografiju privatnog ključa (eng. secret key cryptography), kriptografiju javnog ključa (eng. public key cryptography) i heš funkcije (eng. hash functions) \cite{cryptography}. Kako je Diffie-Hellman protokol predstavnik asimetrične kriptografije, nju ćemo posebno izdvojiti i definisati.
 
-\textbf{Asimetrična kriptografija} ili tzv. tehnika javnog ključa podrazumeva korišćenje dva ključa – jednog za šivrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i Martin Hellman (Martin Helman), dok je \textbf{Ralph Merkle} (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom "New Directions in Cryptography" ("Novi pravci u kriptografiji"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
+\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šivrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom "Novi pravci u kriptografiji" (eng. "New Directions in Cryptography"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
 
-U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi dva ključa i tako omogućava korisnicima bezbednu komunikaciju bez potrebe za deljenjem privatnog ključa. Osnovni princip na kome funkcioniše jeste korišćenje tzv. jednosmernih matematičkih funkcija, koje se lako izračunavaju u jednom smeru, dok isto ne važi i za njihove inverzne funkcije. Na ovaj način omogućeno je postojanje javnog ključa, bez rizika da ga treći korisnik koji nije predviđen kao deo mreže može zloupotrebiti
+U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi dva ključa i tako omogućava korisnicima bezbednu komunikaciju bez potrebe za deljenjem privatnog ključa. Takođe, simetrična kriptografija omogućava postojanje digitalnih potpisa tj. autentifikacije pošiljaoca poruke. Osnovni princip na kome funkcioniše jeste korišćenje tzv. jednosmernih matematičkih funkcija (eng. one-way functions), koje se lako izračunavaju u jednom smeru, dok isto ne važi i za njihove inverzne funkcije \cite{cryptography}. Na ovaj način omogućeno je postojanje javnog ključa, bez rizika da ga treći korisnik koji nije predviđen kao deo mreže može zloupotrebiti. 
 
 
 
@@ -334,11 +334,9 @@ Ovde pišem zaključak.
 
 \begin{thebibliography}{9}
 
-\bibitem{kriptografija} Gary C. Kessler. \emph{An Overview of Cryptography}, 2015.
+\bibitem{cryptography} Gary C. Kessler. \emph{An Overview of Cryptography}, 2015.
 
-\bibitem{Diffie-Hellman protokol i primene} Maryam Ahmed, Baharan Sanjabi, Difo Aldiaz, Amirhossein Rezaei, Habeeb Omotunde. \emph{Diffie-Hellman and Its Application in Security Protocols}, International Journal of Engineering Science and Innovative Technology (IJESIT), 2012.
-
-\bibitem{haltingproblem} A. M. Turing. \emph{On Computable Numbers, with an application to the Entscheidungsproblem}. Proceedings of the London Mathematical Society, 2(42):230–265, 1936.
+\bibitem{Diffie-Hellman} Maryam Ahmed, Baharan Sanjabi, Difo Aldiaz, Amirhossein Rezaei, Habeeb Omotunde. \emph{Diffie-Hellman and Its Application in Security Protocols}, International Journal of Engineering Science and Innovative Technology (IJESIT), 2012.
 
 \bibitem{logjam} Adrian, David; et al. (October 2015). \emph{Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice}
 
