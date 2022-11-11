@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 
 \usepackage{amsmath} % potrebno za matematiku
-
+\usepackage{amsfonts}
 
 \usepackage[english,serbian]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
@@ -136,12 +136,15 @@ d &e&f\\ \hline
 Pre početka razmene ključeva, uspostavljaju se 2 javno poznata broja: $p$ i $g$.
 \begin{itemize}
 
-    \item $p$ - bezbedan prost broj i modulo po kom radimo, preporuka je da to bude broj dužine 3072 bita (broj reda $10^{925}$)[ref needed]
+    \item $p$ - bezbedan prost broj i modulo po kom radimo, preporuka je da to bude broj dužine 2048 bita (broj reda $10^{616}$) \cite{logjam}
     \item $g$ - generator, mora da bude primitivni koren od $p$
 
 \end{itemize}
 
-\emph{Bezbedan prost broj}: $p$ je bezbedno prost ako može da se izrazi kao $p = 2q + 1$ gde je $q$ takođe prost broj. $q$ je Sofija Žermen prost (eng. \textit{Sophie Germain prime}). Ovo je bitno kako bi se izbegao specifičan napad na Diffie-Hellman --- Silver-Polig-Hellman algoritam (eng. \emph{Silver-Pohlig-Hellman algorithm}) \cite{pohlig-hellman}
+\emph{Bezbedan prost broj}: $p$ je bezbedno prost ako može da se izrazi kao $p = 2q + 1$ gde je $q$ takođe prost broj. 
+$q$ je Sofija Žermen prost (eng. \emph{Sophie Germain prime}). 
+Ovo je bitno kako bi se izbegao specifičan napad na Diffie-Hellman --- 
+Silver-Polig-Hellman algoritam (eng. \emph{Silver-Pohlig-Hellman algorithm}) \cite{pohlig-hellman}
 
 \emph{Primitivni koren}: $g$ je primitivni koren po modulu $p$ ako za svaki celi broj $a$ koji je uzajamno prost sa $p$ postoji celi broj $k$ tako da je
     \[g^k \equiv a \mod p\]
@@ -155,9 +158,10 @@ Takvo $k$ se naziva indeks ili diskretni logaritam od $a$ sa odnovom $g \mod p$.
 Recimo da Anastasija i Boban žele da razmene ključeve.
 \begin{itemize}
     \item Pretpostavljamo da su se Anastasija i Boban već dogovorili oko brojeva $g$ i $p$
-    \item Anastasija nasumično bira neki tajni broj $a < p$, ovo je njen privatni ključ
+    \item Anastasija nasumično bira neki tajni broj $x \in \mathbb{N}$ i izračuna njegov \emph{najmanji pozitivni ostatak} 
+        (objašnjeno kasnije), čime dobija  $a$, ovo je njen privatni ključ
     \item Zatim kalkuliše njen javni ključ koji je jednak $A = g^a \mod p$ 
-    \item Boban će uraditi isto, nakon čega poseduje privatni ključ $b < p$ i javni ključ $B = g^b \mod p$
+    \item Boban će uraditi isto, nakon čega poseduje privatni ključ $b$ i javni ključ $B = g^b \mod p$
     \item Anastasija i Boban sada razmene njihove javne ključeve (privatni ključevi ostaju tajni)
     \item Anastasija sada poseduje svoje ključeve, kao i Bobanov javni ključ
     \item Ona će izračunati tajni broj $K = B^a \mod p$. Ako zamenimo $B$, videćemo da je
@@ -171,25 +175,59 @@ Recimo da Anastasija i Boban žele da razmene ključeve.
         \end{align*}
 \end{itemize}
 
-Primetimo da će i Anastasija i Boban izračunati isti broj $K$. To $K$ predstavlja ključ za enkripciju ključeva (engl. \emph{Key-Encryption Key (KEK)}). Pomoću tog ključa mogu sinhrono da razmene novi ključ za enkripciju sadržaja (engl. \emph{Content-Encryption Key (CEK)}) i da nastave komunikaciju pomoću njega.
+\begin{defn}
+    Najmanji pozitivni ostatak nekog $x$ po modulu $p$ je najmanji pozitivni celi broj $a$ tako da je 
+    \[x \equiv a \mod n\]
+\end{defn}
+
+Primetimo da će i Anastasija i Boban izračunati isti broj $K$. 
+$K$ predstavlja ključ za enkripciju ključeva (engl. \emph{Key-Encryption Key (KEK)}). 
+Pomoću tog ključa mogu sinhrono da razmene novi ključ za enkripciju sadržaja 
+(engl. \emph{Content-Encryption Key (CEK)}) i da nastave komunikaciju pomoću njega. \cite{dhstandard}
 
 Neko ko je prisluškivao ovoj razmeni zna $p$, $g$, $g^a$ i $g^b$. Da bi od ovih brojeva pronašao $K$, on mora da izračuna vrednost $a$ ili $b$, problem koji se zove \emph{komputacioni Diffie-Hellman problem} (engl. \emph{computational Diffie-Hellman problem (CDH)}). 
 
 \subsection{Problemi oslonci}
 \label{subsec:problemi_oslonci}
 
-Neka $G$ bude ciklična grupa reda $q$, sa generatorom $g$. Drugačije rečeno, svaki broj $x$ iz $G$ je kongruentan sa nekim $g^k$, gde je $k$ neki celi broj tako da je $0 \leq k \leq q - 1$.
+Neka $G$ bude ciklična grupa reda $q$, sa generatorom $g$. Drugačije rečeno, svaki broj $x$ iz $G$ je 
+kongruentan sa nekim $g^k$, gde je $k$ neki celi broj tako da je $0 \leq k \leq q - 1$.
 \[x = g^k\]
-Ako znamo $g$ i $k$, lako možemo izračunati $x$. Međutim, ako znamo $x$ i $g$, pronalaženje $k$ je veoma teško, i to je zapravo problem diskretnog logaritma.
+Ako znamo $g$ i $k$, lako možemo izračunati $x$. Međutim, ako znamo $x$ i $g$, pronalaženje $k$ je veoma teško, 
+i to je zapravo problem diskretnog logaritma.
 
 \begin{defn}
-Problem diskretnog logaritma u cikličnoj grupi $G$ reda $q$ je pronalaženje broja $k$, $0 \leq k \leq q - 1$ tako da $x = g^a$, za neko $g$ i $x$.
+Problem diskretnog logaritma u cikličnoj grupi $G$ reda $q$ je pronalaženje broja $k$, $0 \leq k \leq q - 1$ 
+tako da $x = g^a$, za neko $g$ i $x$.
 \end{defn}
 
 Ako možemo da rešimo problem diskretnog logaritma, možemo da nađemo i tajni broj $K$ iz Diffie-Hellman ako znamo oba javna ključa.
-Obrnuto nije istinito: ako možemo da pronađemo tajni broj $K$, ne mora da znači da možemo rešiti bilo koji problem diskretnog logaritma.
-Naime, dovoljno je rešiti jedan veoma specifičan diskretan logaritam u jenoj veoma specifičnoj grupi za pronalaženje $K$.
+Obrnuto nije dokazano: ako možemo da pronađemo tajni broj $K$, ne mora da znači da možemo rešiti bilo koji problem 
+diskretnog logaritma.
 
+Ne treba da pretpostavimo da je diskretni logaritam jedini način da se razbije Diffie-Hellman. 
+Dovoljna je bilo koja metoda koja može da pronađe $g^{ab}$ iz $g^a$ i $g^b$, i otud uvođenje sledećeg problema:
+
+\begin{defn}
+    Neka $a,b\in \mathbb{Z}\setminus q\mathbb{Z}$ ($a$ i $b$ su u nekoj cikličnoj grupi reda $q$ \textbf{nek neko proveri ovo!}),
+    i neka $A = g^a$ i $B = g^b$
+    \textbf{Komputacioni Diffie-Hellman problem} (CDH) je problem nalaženja $g^{ab}$ ako znamo $A$ i $B$ u cikličnoj grupi
+    $G = \langle g \rangle$ reda $q$.
+\end{defn}
+
+Na težini ovog problema se oslanja bezbednost Diffie-Hellman šeme. Komputacioni Diffie-Hellman je u
+srodstvu sa problemom Diskretog Logaritma, i najefikasnije rešenje za koje znamo je da rešimo problem Diskretnog Logaritma 
+ali još uvek nije dokazana ekvivalencija između njih. \cite{dlproblem}
+Takođe slična je i ElGamal enkripcija o kojoj će biti reči kasnije. Ona se oslanja na sledeći problem:
+
+\begin{defn}
+    Neka $a,b,c\in \mathbb{Z}\setminus q\mathbb{Z}$ i $A = g^a$, $B = g^b$. Sa verovatnoćom $\frac{1}{2}$ postavimo $C = g^c$, 
+    a inače $C = g^{ab}$. Odlučujući Diffie-Hellman problem (engl. \emph{Decisional Diffie-Hellman problem (DDH)}) je problem
+    odlučivanja da li je $C = g^{ab}$, ako znamo $\langle g \rangle$ i $A, B, C$.
+\end{defn}
+
+Ako znamo da rešimo komputacioni Diffie-Hellman problem, lako je rešiti odlučujući Diffie-Hellman problem.
+Obrnuto ne važi. [citation needed]
 
 \section{Drugi naslov}
 \label{sec:naslov2}
@@ -282,7 +320,13 @@ Ovde pišem zaključak.
 
 \bibitem{haltingproblem} A. M. Turing. \emph{On Computable Numbers, with an application to the Entscheidungsproblem}. Proceedings of the London Mathematical Society, 2(42):230–265, 1936.
 
+\bibitem{logjam} Adrian, David; et al. (October 2015). \emph{Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice}
+
 \bibitem{pohlig-hellman} Mollin, Richard (2006-09-18). \emph{An Introduction To Cryptography} (2nd ed.). Chapman and Hall/CRC. p. 344
+
+\bibitem{dhstandard} E. Rescorla (June 1999). \emph{Diffie-Hellman Key Agreement Method}
+
+\bibitem{dlproblem} Kevin S. McCurley (1990). \emph{The Discrete Logarithm Problem}
 
 \end{thebibliography}
 
