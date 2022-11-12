@@ -7,6 +7,8 @@
 \usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
+\usepackage{makecell} % potrebno za formatiranje tabele
+\usepackage{tabu}
 
 \usepackage{amsmath} % potrebno za matematiku
 \usepackage{amsfonts}
@@ -97,6 +99,8 @@ Recimo da Anastasija i Boban žele da razmene ključeve.
         \end{align*}
 \end{itemize}
 
+%NOVA TABELA
+
 \begin{table}
     \begin{center}
     \begin{tabular}{ |c|c|c|c| }
@@ -105,21 +109,21 @@ Recimo da Anastasija i Boban žele da razmene ključeve.
         \hline
         Početak algoritma &  & $g, p$ &  \\
         \hline
-        Oboje računaju svoje ključeve & $a, A=g^a \mod p $ & $g, p$ & $b, B=g^b \mod p$ \\
+        Svako računa svoj ključ & $a, A=g^a \mod p $ & $g, p$ & $b, B=g^b \mod p$ \\
         \hline
-        Razmenjuju se javni ključevi & $a, A, B$ & $g, p, A, B$ & $b, B, A $ \\
+        Razmena javnih ključeva & $a, A, B$ & $g, p, A, B$ & $b, B, A $ \\
         \hline
-        Oboje izračunaju isto, tajno K & 
-        {$\!\begin{aligned}
-            a, A, B, K=B^a \mod p &=\\ g^{ab} \mod p
-        \end{aligned}$}
-            & $g, p, A, B$ &
-        {$\!\begin{aligned}
-            b, B, A, K=A^b \mod p &=\\ g^{ab} \mod p
-        \end{aligned}$}\\
+        \makecell{Svako računa isto, \\ tajno K} &
+        \makecell{{$\!\begin{aligned}
+            a, A, B,\\K=B^a \mod p\\=g^{ab} \mod p
+        \end{aligned}$} } &
+        \makecell{$g, p, A, B$} &
+        \makecell{{$\!\begin{aligned}
+            b, B, A,\\K=A^b \mod p\\=g^{ab} \mod p
+        \end{aligned}$}\\}\\
         \hline
     \end{tabular}
-    \caption{\textbf{ovo je baš očajna tabela}}
+    \caption{\textbf{ovo više nije tako očajna tabela}}
     \label{table:tajnost_promenljivih}
     \end{center}
 \end{table}
