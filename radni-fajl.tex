@@ -7,8 +7,9 @@
 \usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
+
 \usepackage{makecell} % potrebno za formatiranje tabele
-\usepackage{tabu}
+%\usepackage{tabu}
 
 \usepackage{amsmath} % potrebno za matematiku
 \usepackage{amsfonts}
@@ -182,6 +183,7 @@ Takođe slična je i ElGamal enkripcija o kojoj će biti reči kasnije. Ona se o
 Ako znamo da rešimo komputacioni Diffie-Hellman problem, lako je rešiti odlučujući Diffie-Hellman problem.
 Obrnuto ne važi. \cite{ddh-vs-cdh}
 
+
 \section{Primer Diffie-Hellman algoritma na konkretnim vrednostima}
 \label{sec:primerDH}
 
@@ -210,17 +212,6 @@ Jednačina biva zadovoljena kada je eksponent $a=97$. Sa ovim saznanjem, napada�
 Zbog ovoga se u Diffie-Hellman algoritmu koriste vrednosti koje su značajno veće. U tom slučaju razbijanje algoritma grubom silom postaje krajnje nepraktično.
  
 
-\subsection{... podnaslov}
-\label{subsec:podnaslovN}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-
-
 \section{ElGamalov sistem enkripcije}
 \label{sec:Elgamal}
 Nakon što su Diffie i Hellman uveli koncept kriptografije javnog ključa, mnogo istraživača pokušalo je da pronađe efikasniji sistem enkripcije zasnovan na Diffie-Hellman algoritmu (linkovi 6,7,9 iz originalnog rada). Za razliku od npr. RSA sistema (9) koji se oslanja na kompleksnost faktorisanja velikih celih brojeva, ElGamalov sistem zasnovan je na kompleksnosti izračunavanja vrednosti diskretnih logaritama.
@@ -248,7 +239,7 @@ Glavne celine koje se uočavaju u koracima ElGamalovog algoritma su:
  Dakle, Elgamalov algoritam sastoji se iz tri glavne tačke - generisanje ključa, enkripcija i dekripcija. U datom postupku, Boban želi neometano da pošalje poruku Anastasiji, diskretno i bez mešanja trećeg lica. Na prelazu između prvog i drugog koraka Anastasija šalje Bobanu javni ključ ${q,\alpha,Y_A}$ koji je sama formirala. Na prelazu između drugog i trećeg koraka Boban šalje Anastasiji uređeni par celih brojeva $(C1,C2)$ kojim je šifrovao poruku $M$ koju želi da joj pošalje. Na osnovu dobijenog para Anastasija prevodi poruku. 
  
  Ukoliko je poruka previše dugačka i neophodno ju je razbiti na više delova, za enkripciju svakog pojedinačnog dela neophodno je nasumično izabrati različito $k$ (izbor ove vrednosti dešava se u drugoj tački trećeg koraka u navedenom ElGamal algoritmu). ElGamal algoritam je siguran ukoliko se za enkripciju koriste dovoljno veliki brojevi. Preporučena minimalna veličina za nasumično izabran prost broj $q$ je trista cifara.
- 
+
 \subsection{Dokaz ispravnosti ElGamalovog algoritma}
 Prema definiciji ElGamalovog algoritma, privremeni ključ za jednokratnu upotrebu računa se po formuli $K=Y_A^k\mod q$. Po Diffie-Hellman definiciji, $Y_A=\alpha^{X_A}\mod q$. Kada se ovaj izraz zameni u početnoj formuli, dobije se $K=(\alpha^{X_A}\mod q)^k\mod q =\alpha^{kX_A}\mod q$. Po ElGamalovoj definiciji, $C_1=\alpha^k\mod q$. Kada se ovaj izraz zameni u prethodnoj formuli, dobije se $K=C_1^{X_A}\mod q$, čime je dokazano da i Anastasija i Boban mogu izračunati istu vrednost privremenog ključa na osnovu sebi raspoloživih podataka.
 
@@ -266,6 +257,7 @@ Algoritam opisan u prethodnim poglavljima, primenjen na vrednostima konkretizova
   \item $K=C_1^{X_A}\mod q=11^5\mod 19$
 \end{itemize}
 ... jos malo lol
+
 
 \section{Primene na bezbednosnim protokolima}
 \label{sec:primene}
@@ -289,35 +281,11 @@ SSH (skraćeno od eng. Secure Shell) je protokol koji se koristi za osiguravanje
 
 IPSec (skraćeno od eng. Internet Protocol Security) je protokol koji obezbeđuje komunikaciju između dve jedinice povezane IP mrežom \cite{use}. Dok prethodna dva protokola štite samo saobraćaj koji se odvija preko njih tj. njihovih aplikacija, IPSec funkcioniše za sve konekcije ostvarene između bilo koja dva računara u okviru IP mreže \cite{use}. Drugim rečima, IPSec podrzumeva transparentnu komunikaciju, u kojoj ni korisnici ni aplikacija ne moraju znati ništa o šifrovanju veze, što ga dovodi u prednost u odnosu na prethodno navedene protokole.
 
-\section{Poslednji naslov}
-\label{sec:naslovM}
-
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
-Ovde pišem tekst. 
 
 \section{Zaključak}
 \label{sec:zakljucak}
 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-Ovde pišem zaključak. 
-
+Treba nam zaključak
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
@@ -350,11 +318,7 @@ Ovde pišem zaključak.
 
 \appendix
 \section{Dodatak}
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
+Dodatni tekst? pretpostavljam da nećemo koristiti ovo 
 
-    
+
 \end{document}
