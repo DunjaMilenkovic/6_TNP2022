@@ -6,7 +6,7 @@
 \usepackage{url}
 \usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
-\usepackage{graphicx}
+\usepackage{graphicx} % potrebno za sliku
 
 \usepackage{makecell} % potrebno za formatiranje tabele
 %\usepackage{tabu}
@@ -44,12 +44,13 @@
 \label{sec:uvod}
 Sve rasprostranjenija upotreba interneta širom sveta donosi sa sobom, kako značajne prednosti u načinu istraživanja, rada, povezivanja i sl. tako i povećan rizik od nebezbedne komunikacije i razmene podataka. Bilo da se radi o individualnim, privatnim razmenama informacija između ljudi ili rada nekih od najvećih državnih institucija, bezbedna i neometana interakcija i komunikacija među korisnicima na internetu je od presudnog značaja. Glavni problem nastaje kada spoljni korisnik koji nije predviđen kao deo veze pokuša da je prekine i dođe do određenih informacija koje su originalno bile namenjene jednom od povezanih korisnika. Upravo rešavanjem ovakvih problema bavi se \textbf{kriptografija}.
 
-Kriptografija je oblast koja razvija tehnike koje omogućavaju zaštićenu i efikasnu digitalnu komunikaciju \cite{cryptography}. Bez nje, komunikacija nebezbednim i nepoverljivim kanalima, što uključuje sve vrste mreža, a pogotovo internet, ne bi bila moguća. U ovom radu bavićemo se jednom od tehnika kriptografije koja se naziva \textbf{Diffie-Hellman algoritam} tj. \textbf{Diffie-Hellman protokol} i predstavićemo način rada algoritma, njegova osnovna svojstva, primene, prednosti i mane.
+Kriptografija je oblast koja razvija tehnike koje omogućavaju zaštićenu i efikasnu digitalnu komunikaciju \cite{cryptography}. Bez nje, komunikacija nebezbednim i nepoverljivim kanalima, što uključuje sve vrste mreža, a pogotovo internet, ne bi bila moguća. U ovom radu bavićemo se jednom od tehnika kriptografije koja se naziva \textbf{Diffie-Hellman algoritam} %tj. \textbf{Diffie-Hellman protokol}
+i predstavićemo način rada algoritma, njegova osnovna svojstva, primene, prednosti i mane.
 
 \section{Osnove Diffie-Hellman algoritma}
 Glavna klasifikacija kriptografskih algoritama deli ih na kriptografiju privatnog ključa (eng. secret key cryptography), kriptografiju javnog ključa (eng. public key cryptography) i heš funkcije (eng. hash functions) \cite{cryptography}. Kako je Diffie-Hellman protokol predstavnik asimetrične kriptografije, nju ćemo posebno izdvojiti i definisati.
 
-\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šifrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom ,,Novi pravci u kriptografiji‘‘ (eng. "New Directions in Cryptography"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
+\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šifrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom ,,Novi pravci u kriptografiji‘‘ (eng. "New Directions in Cryptography"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. %Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
 
 U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi dva ključa i tako omogućava korisnicima bezbednu komunikaciju bez potrebe za deljenjem privatnog ključa. Takođe, simetrična kriptografija omogućava postojanje digitalnih potpisa tj. autentifikacije pošiljaoca poruke. Osnovni princip na kome funkcioniše jeste korišćenje tzv. jednosmernih matematičkih funkcija (eng. one-way functions), koje se lako izračunavaju u jednom smeru, dok isto ne važi i za njihove inverzne funkcije \cite{cryptography}. Na ovaj način omogućeno je postojanje javnog ključa, bez rizika da ga treći korisnik koji nije predviđen kao deo mreže može zloupotrebiti. 
 
@@ -269,7 +270,7 @@ Diffie-Hellman algoritam ima široku primenu na različitim internet protokolima
 
 SSL (skraćeno od eng. Secure Socket Layer) je protokol koji omogućava bezbednu onlajn komunikaciju između veb servera i pretraživača, koristeći upravo Diffie-Hellman algoritam \cite{use}. Sastoji se iz dva sloja: donjeg i gornjeg. Donji sloj omogućava privatnu i sigurnu komunikaciju koristeći TCP (skraćeno od eng. Transmission Control Protocol), koji se zasniva samo na simetričnoj kriptografiji. Upravo u gornjem sloju, koji se naziva i protokol rukovanja (eng. handshake protocol), koristi se Diffie-Hellman algoritam. On omogućava autentifikaciju servera klijentu, kao i korišćenje javnog ključa za ,,dogovaranje‘‘ o načinu šifrovanja i razmene ključeva koju će koristiti za komunikaciju \cite{use}. 
 
-Jedna od najznačajnijih praktičnih primena SSL protokola odnosi se na osiguravanje onlajn transakcija kao što je npr. elektronsko bankarstvo.
+%Jedna od najznačajnijih praktičnih primena SSL protokola odnosi se na osiguravanje onlajn transakcija kao što je npr. elektronsko bankarstvo.
 
 \subsection{SSH}
 \label{subsec:ssh}
