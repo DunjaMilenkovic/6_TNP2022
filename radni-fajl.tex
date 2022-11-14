@@ -62,42 +62,56 @@ U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi
 Pre početka razmene ključeva, uspostavljaju se 2 javno poznata broja: $p$ i $g$.
 \begin{itemize}
 
-    \item $p$ - bezbedan prost broj i modulo po kom radimo, preporuka je da to bude broj dužine 2048 bita (broj reda $10^{616}$) \cite{logjam}
-    \item $g$ - generator, mora da bude primitivni koren od $p$
+    \item $p$ - \emph{bezbedan prost broj} i modulo po kom radimo, preporuka je da 
+        to bude broj dužine 2048 bita (broj reda $10^{616}$) \cite{logjam}
+    \item $g$ - generator, mora da bude \emph{primitivni koren} od $p$
 
 \end{itemize}
 
-\emph{Bezbedan prost broj}: $p$ je bezbedno prost ako može da se izrazi kao $p = 2q + 1$ gde je $q$ takođe prost broj. 
-$q$ je Sofija Žermen prost (eng. \emph{Sophie Germain prime}). 
+\begin{defn}
+    \emph{Bezbedan prost broj}: $p$ je bezbedno prost ako može da se izrazi kao $p = 2q + 1$ gde je $q$ takođe prost broj. 
+    $q$ je Sofija Žermen prost (eng. \emph{Sophie Germain prime}). 
+\end{defn}
 Ovo je bitno kako bi se izbegao specifičan napad na Diffie-Hellman --- 
 Silver-Polig-Hellman algoritam (eng. \emph{Silver-Pohlig-Hellman algorithm}) \cite{pohlig-hellman}
 
-\emph{Primitivni koren}: $g$ je primitivni koren po modulu $p$ ako za svaki celi broj $a$ koji je uzajamno prost sa $p$ postoji celi broj $k$ tako da je
+\begin{defn}
+    \emph{Primitivni koren}: $g$ je primitivni koren po modulu $p$ ako za
+    svaki celi broj $a$ koji je uzajamno prost sa $p$ postoji celi broj $k$ tako da je
     \[g^k \equiv a \mod p\]
-Takvo $k$ se naziva indeks ili diskretni logaritam od $a$ sa odnovom $g \mod p$.
-
+    Takvo $k$ se naziva indeks ili diskretni logaritam od $a$ sa osnovom $g \mod p$.
+\end{defn}
 
 
 \subsection{Koraci algoritma}
 \label{subsec:koraci_algoritma}
 
+\begin{defn}
+    Najmanji pozitivni ostatak nekog $x$ po modulu $p$ je najmanji pozitivni celi broj $a$ tako da je 
+    \[x \equiv a \mod n\]
+\end{defn}
+
 Recimo da Anastasija i Boban žele da razmene ključeve.
 \begin{itemize}
     \item Pretpostavljamo da su se Anastasija i Boban već dogovorili oko brojeva $g$ i $p$
-    \item Anastasija nasumično bira neki tajni broj $x \in \mathbb{N}$ i izračuna njegov \emph{najmanji pozitivni ostatak} 
-        (objašnjeno kasnije), čime dobija  $a$, ovo je njen privatni ključ
-    \item Zatim kalkuliše njen javni ključ koji je jednak $A = g^a \mod p$ 
+%    \item Anastasija nasumično bira neki tajni broj $x \in \mathbb{N}$ i izračuna njegov \emph{najmanji pozitivni ostatak} 
+%        (objašnjeno kasnije), čime dobija  $a$, ovo je njen privatni ključ
+    \item Anastasija računa \emph{najmanji pozitivni ostatak} nasumično odabranog broja $x \in \mathbb{N}$,
+        čime dobija njen privatni ključ $a$, zatim računa njen javni ključ $A = g^a \mod p$
+%    \item Zatim kalkuliše njen javni ključ koji je jednak $A = g^a \mod p$ 
     \item Boban će uraditi isto, nakon čega poseduje privatni ključ $b$ i javni ključ $B = g^b \mod p$
     \item Anastasija i Boban sada razmene njihove javne ključeve (privatni ključevi ostaju tajni)
     \item Anastasija sada poseduje svoje ključeve, kao i Bobanov javni ključ
     \item Ona će izračunati tajni broj $K = B^a \mod p$. Ako zamenimo $B$, videćemo da je
         \begin{align*}
-            K = (g^b \mod p)^a \mod p &=\\ (g^b)^a \mod p &=\\ g^{ab} \mod p
+%            K = (g^b \mod p)^a \mod p &=\\ (g^b)^a \mod p &=\\ g^{ab} \mod p
+            K = (g^b)^a \mod p &=\\ g^{ab} \mod p
         \end{align*}
-    \item Boban poseduje svoje ključeve i Anastasijin javni ključ
-    \item On će istim postupkom kao i Anastasija pronaći $K$
+    \item Boban sada poseduje svoje ključeve i Anastasijin javni ključ
+    \item On će istim postupkom kao i Anastasija pronaći $K$:
         \begin{align*}
-            K = A^b \mod p &=\\ (g^a \mod p)^b \mod p &=\\ (g^a)^b \mod p &=\\ g^{ab} \mod p
+%            K = A^b \mod p &=\\ (g^a \mod p)^b \mod p &=\\ (g^a)^b \mod p &=\\ g^{ab} \mod p
+            K = A^b \mod p &=\\ (g^a)^b \mod p &=\\ g^{ab} \mod p
         \end{align*}
 \end{itemize}
 
@@ -130,17 +144,14 @@ Recimo da Anastasija i Boban žele da razmene ključeve.
     \end{center}
 \end{table}
 
-\begin{defn}
-    Najmanji pozitivni ostatak nekog $x$ po modulu $p$ je najmanji pozitivni celi broj $a$ tako da je 
-    \[x \equiv a \mod n\]
-\end{defn}
-
 Primetimo da će i Anastasija i Boban izračunati isti broj $K$ (\ref{slika:boje}).  
 $K$ predstavlja ključ za enkripciju ključeva (engl. \emph{Key-Encryption Key (KEK)}). 
 Pomoću tog ključa mogu sinhrono da razmene novi ključ za enkripciju sadržaja 
 (engl. \emph{Content-Encryption Key (CEK)}) i da nastave komunikaciju pomoću njega. \cite{dhstandard}
 
-Neko ko je prisluškivao ovoj razmeni zna $p$, $g$, $g^a$ i $g^b$ (\ref{table:tajnost_promenljivih}). Da bi od ovih brojeva pronašao $K$, on mora da izračuna vrednost $a$ ili $b$, problem koji se zove \emph{komputacioni Diffie-Hellman problem} (engl. \emph{computational Diffie-Hellman problem (CDH)}).
+Neko ko je prisluškivao ovoj razmeni zna $p$, $g$, $g^a$ i $g^b$ (\ref{table:tajnost_promenljivih}).
+Da bi od ovih brojeva pronašao $K$, on mora da izračuna vrednost $a$ ili $b$, 
+problem koji se zove \emph{komputacioni Diffie-Hellman problem} (engl. \emph{computational Diffie-Hellman problem (CDH)}).
 
 \begin{figure}
 \centering
@@ -152,9 +163,9 @@ Neko ko je prisluškivao ovoj razmeni zna $p$, $g$, $g^a$ i $g^b$ (\ref{table:ta
 \subsection{Problemi oslonci}
 \label{subsec:problemi_oslonci}
 
-Neka $G$ bude ciklična grupa reda $q$, sa generatorom $g$. Drugačije rečeno, svaki broj $x$ iz $G$ je 
-kongruentan sa nekim $g^k$, gde je $k$ neki celi broj tako da je $0 \leq k \leq q - 1$.
-\[x = g^k\]
+Neka $G$ bude ciklična grupa reda $q$, sa generatorom $g$. %Drugačije rečeno, svaki broj $x$ iz $G$ je 
+%kongruentan sa nekim $g^k$, gde je $k$ neki celi broj tako da je $0 \leq k \leq q - 1$.
+%\[x = g^k\]
 Ako znamo $g$ i $k$, lako možemo izračunati $x$. Međutim, ako znamo $x$ i $g$, pronalaženje $k$ je veoma teško, 
 i to je zapravo problem diskretnog logaritma.
 
@@ -163,16 +174,16 @@ Problem diskretnog logaritma u cikličnoj grupi $G$ reda $q$ je pronalaženje br
 tako da $x = g^a$, za neko $g$ i $x$.
 \end{defn}
 
-Ako možemo da rešimo problem diskretnog logaritma, možemo da nađemo i tajni broj $K$ iz Diffie-Hellman ako znamo oba javna ključa.
-Obrnuto nije dokazano: ako možemo da pronađemo tajni broj $K$, ne mora da znači da možemo rešiti bilo koji problem 
-diskretnog logaritma.
+%Ako možemo da rešimo problem diskretnog logaritma, možemo da nađemo i tajni broj $K$ iz Diffie-Hellman ako znamo oba javna ključa.
+%Obrnuto nije dokazano: ako možemo da pronađemo tajni broj $K$, ne mora da znači da možemo rešiti bilo koji problem 
+%diskretnog logaritma.
 
 Ne treba da pretpostavimo da je diskretni logaritam jedini način da se razbije Diffie-Hellman. 
 Dovoljna je bilo koja metoda koja može da pronađe $g^{ab}$ iz $g^a$ i $g^b$, i otud uvođenje sledećeg problema:
 
 \begin{defn}
     Neka $a,b\in \mathbb{Z}\setminus q\mathbb{Z}$ ($a$ i $b$ su u nekoj cikličnoj grupi reda $q$),
-    i neka $A = g^a$ i $B = g^b$
+    i neka $A = g^a$ i $B = g^b$.
     \textbf{Komputacioni Diffie-Hellman problem} (CDH) je problem nalaženja $g^{ab}$ ako znamo $A$ i $B$ u cikličnoj grupi
     $G = \langle g \rangle$ reda $q$.
 \end{defn}
@@ -180,6 +191,7 @@ Dovoljna je bilo koja metoda koja može da pronađe $g^{ab}$ iz $g^a$ i $g^b$, i
 Na težini ovog problema se oslanja bezbednost Diffie-Hellman šeme.
 Najefikasnije rešenje za koje znamo je da rešimo problem Diskretnog Logaritma 
 ali još uvek nije dokazana ekvivalencija između njih. \cite{dlproblem}
+
 Takođe slična je i ElGamal enkripcija o kojoj će biti reči kasnije. Ona se oslanja na sledeći problem:
 
 \begin{defn}
