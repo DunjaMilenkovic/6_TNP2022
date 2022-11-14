@@ -281,9 +281,9 @@ Algoritam opisan u prethodnim poglavljima, primenjen na vrednostima konkretizova
 \section{Diffie-Hellman pod napadom}
 Razmenu tajne Anastasije i Bobana napadač želi da spreči, to može učiniti na različite načine. Zavisno od cilja - da li želi da dobije deljene informacije ili da spreči Bobana u dobijanju istih, mi delimo napade Diffie-Hellman protokola na sledeći način:
 \begin{itemize}
-\item DoS (eng. \emph{Denial of Service}) - Napadač pokušava da omete izvršenje DH protokola onesposobljavanjem mreže, računara.
-\item Austsajder (eng. \emph{Outsider}) napad - I u ovom tipu napada napadač ometa DH protokol, ali na način na koji dobija informacije. On dodaje, briše, ponavlja poruke kako bi se domogao informacija do kojih ne može da dođe isključivo uz pomoć javnog ključa.
+\item Autsajder (eng. \emph{Outsider}) napad - I u ovom tipu napada napadač ometa DH protokol, ali na način na koji dobija informacije. On dodaje, briše, ponavlja poruke kako bi se domogao informacija do kojih ne može da dođe isključivo uz pomoć javnog ključa.
 \item Insider napad - Ukoliko Anastasija ili Boban odluči da objavi tajnu, to može učiniti time što će napraviti protokol koji se može lako razbiti odnosno svako ko vidi javni ključ može lako zaključiti šta je tajna.
+\item DoS (eng. \emph{Denial of Service}) - Napadač pokušava da omete izvršenje DH protokola onesposobljavanjem mreže, računara.
 \end{itemize}
 
 
@@ -303,6 +303,20 @@ Postoji još jedan oblik napada Čovek u Sredini. Ovaj oblik obuhvata samo prisk
 Ukoliko Anastasija ili Boban izabere $g^{a}=1$ odnosno $g^{b}=1$ onda će $g^{ab}$ biti jednako 1. S obzirom da je razmena tajnog ključa javna, svako ko vidi isti je u mogućnosti da uoči ovu grešku. Postoji i druga greška koja se može javiti, a to je kada je $g^{a}=g$. Jedna od prednosti koje RSA (Rivest–Shamir–Adleman) kriptosistem ima jeste zahtev da svako $a$ i $b$ zadovoljavaju uslov dužine $p$ odnosno $a,b\geq2^{p-1}$, pri čemu dužinu definišimo kao $k$ za koje broj $n$ zadovoljava $n\geq2^{k}$. 
 
 Pretpostavimo da su $a$ i $b$ ispravni i da $g^{ab}$ nije lako odrediti. Ukoliko proveru ne vrši biće sposobno da logički zaključi da se pojavila greška, već računar kod kojeg DH protokol nije ispravno implementiran onda napadač Veljko sa lakoćom presreta $g^{a}$ i $g^{b}$, i zamenjuje obe vrednosti sa $g^{v}=1$. Samim tim $g^{ab}=1$ i protokol je ranjiv samo ako računar ne detektuje grešku. Isti argument važi za vrednosti oblika $g^{\alpha*a*(p-1)}$ gde je $\alpha\geq1$
+\subsection{Lažno predstavljanje}
+Postoji više načina na koje Miloš može da prevari Anastasiju koja misli da prima Bobanove poruke. Jedan od načina jeste ponovno slanje Bobanovih poruka. Recimo da su Anastasija i Boban zajedno i da joj je Boban poslao poruku: "Volim te". Nakon par godina nesrećnog braka i teškog raskida, Miloš 
+ bi samo ponovio Bobanovu poruku. Naravno, Miloš mora da bude izuzetno moćan kako bi izvršio ove tipove napada.
+
+Ukoliko Miloš želi da dovede Bobana u još goru situaciju on će presresti njegovu poruku i poslati je Mileni. Naši primeri su samo mali delić beskonačnih mogućnosti koje ovaj napad pruža.
+
+
+\subsection{DoS napad}
+Petrov cilj je da preoptereti server lažnim zahtevima koristeći činjenicu da su serveri memorijski ograničeni i same sposobnosti računara. DH protokol je podložan sledećim DoS tipovima napada:
+\begin{itemize}
+\item Memorijski - Najlakši način na koji se server može zaštiti od ovoga jesu kriptografske zagonetke. Inicijatori konekcije su primorani da pre svakog poslatog zahteva odnosno poruke odrade jednu zagonetku. One ne troše puno vremena za normalne korisnike, ali za Petra one su noćna mora. Kako bismo u potpunosti zaštitili server potrebno je da svaka zagonetka ima vremenski interval u toku kojeg morate odgovoriti na nju. Pritom je bitno da naglasimo da $t_1 \neq t_2$ gde je $t$ spomenuti vremenski interval. 
+\item Računarski - Petar se vraća, ovoga puta je naoružan sa gomilu nasumično generisanih ključeva koji nemaju ništa drugo za cilj sem da preopterete Bobanov računar koji pokušava da izračuna tajni zajednički DH ključ koristeći prebrojivo mnogo lažnih ključeva. 
+Bitno je da naglasimo da je potrebno odrediti vremenski period za koji konekcija sa serverom postoji. Ukoliko ona traje beskonačno dugo, server je podložan DoS napadu.
+\end{itemize}
 
 \section{Primene na bezbednosnim protokolima}
 \label{sec:primene}
