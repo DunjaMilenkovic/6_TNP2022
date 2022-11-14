@@ -135,18 +135,18 @@ Recimo da Anastasija i Boban žele da razmene ključeve.
     \[x \equiv a \mod n\]
 \end{defn}
 
-Primetimo da će i Anastasija i Boban izračunati isti broj $K$ (\ref{table:tajnost_promenljivih}).  
+Primetimo da će i Anastasija i Boban izračunati isti broj $K$ (\ref{slika:boje}).  
 $K$ predstavlja ključ za enkripciju ključeva (engl. \emph{Key-Encryption Key (KEK)}). 
 Pomoću tog ključa mogu sinhrono da razmene novi ključ za enkripciju sadržaja 
 (engl. \emph{Content-Encryption Key (CEK)}) i da nastave komunikaciju pomoću njega. \cite{dhstandard}
 
-Neko ko je prisluškivao ovoj razmeni zna $p$, $g$, $g^a$ i $g^b$. Da bi od ovih brojeva pronašao $K$, on mora da izračuna vrednost $a$ ili $b$, problem koji se zove \emph{komputacioni Diffie-Hellman problem} (engl. \emph{computational Diffie-Hellman problem (CDH)}).
+Neko ko je prisluškivao ovoj razmeni zna $p$, $g$, $g^a$ i $g^b$ (\ref{table:tajnost_promenljivih}). Da bi od ovih brojeva pronašao $K$, on mora da izračuna vrednost $a$ ili $b$, problem koji se zove \emph{komputacioni Diffie-Hellman problem} (engl. \emph{computational Diffie-Hellman problem (CDH)}).
 
 \begin{figure}
 \centering
 \includegraphics{Boje.jpg}
 \caption{\textbf{Slikoviti prikaz Diffie-Hellman algoritma}}
-\label{slike:primer}
+\label{slika:boje}
 \end{figure}
 
 \subsection{Problemi oslonci}
