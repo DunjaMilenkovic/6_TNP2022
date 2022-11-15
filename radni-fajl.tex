@@ -238,7 +238,7 @@ Zbog ovoga se u Diffie-Hellman algoritmu koriste vrednosti koje su značajno ve�
  
 \section{ElGamalov sistem enkripcije}
 \label{sec:Elgamal}
-Nakon što su Diffie i Hellman uveli koncept kriptografije javnog ključa, mnogo istraživača pokušalo je da pronađe efikasniji sistem enkripcije zasnovan na Diffie-Hellman algoritmu (linkovi 6,7,9 iz originalnog rada). Za razliku od npr. RSA sistema (9) koji se oslanja na kompleksnost faktorisanja velikih celih brojeva, ElGamalov sistem zasnovan je na kompleksnosti izračunavanja vrednosti diskretnih logaritama.
+Nakon što su Diffie i Hellman uveli koncept kriptografije javnog ključa, mnogo istraživača pokušalo je da pronađe efikasniji sistem enkripcije zasnovan na Diffie-Hellman algoritmu. Za razliku od npr. RSA sistema \cite{dhpaper} koji se oslanja na kompleksnost faktorisanja velikih celih brojeva, ElGamalov sistem zasnovan je na kompleksnosti izračunavanja vrednosti diskretnih logaritama \cite{elgamal}.
 
 Glavne celine koje se uočavaju u koracima ElGamalovog algoritma su:
 \begin{enumerate}
@@ -374,6 +374,8 @@ Komunikacija na internetu bila bi potpuno nezamisliva bez postojanja kriptografi
 \bibitem{dlproblem} Kevin S. McCurley (1990). \emph{The Discrete Logarithm Problem}
 
 \bibitem{ddh-vs-cdh} A. Joux, K. Nguyen (2003). \emph{Separating Decision Diffie-Hellman from Computational Diffie-Hellman in Cryptographic Groups}
+
+\bibitem{elgamal} T.Elgamal (1985). \emph{A public key cryptosystem and a signature scheme based on discrete logarithms}
 
 \bibitem{dhpaper} J. F. Raymond, A. Stiglic (2000). \emph{Security Issues in the Diffie-Hellman Key Agreement Protocol}
 
