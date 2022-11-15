@@ -244,22 +244,19 @@ Nakon što su Diffie i Hellman uveli koncept kriptografije javnog ključa, mnogo
 
 Glavne celine koje se uočavaju u koracima ElGamalovog algoritma su:
 \begin{enumerate}
-    \item Javno su poznata dva cela broja - prost broj $q$ i njegov prost koren $\alpha$ koji je ceo broj.
-    \item Anastasija generiše par ključeva (privatni i javni).\begin{itemize}
-        \item Bira privatan ključ $X_A$, ali takav da je $1<X_A<q-1$.
-        \item Izračunava javni ključ po formuli $Y_A=\alpha^X_A\mod q$
-        \item Privatni ključ je $X_A$, a javni ključ je ${q,\alpha,Y_A}$
-    \end{itemize}
-    \item Boban šifruje poruku koristeći Anastasijin javni ključ.\begin{itemize}
-        \item Predstavi poruku kao ceo broj $M$ iz domena $[0,q-1]$.
-        \item Odabere proizvoljan ceo broj $k$ iz domena $[1,q-1]$.
-        \item Izračuna privremeni ključ za jednokratnu upotrebu, po formuli: $K=Y_A^k\mod q$.
-        \item Konačno, broj kojim je reprezentovana poruka šifruje kao par celih brojeva $(C1,C2)$, i to: $C1=\alpha^k \mod q$, i $C2=KM\mod q$.
-    \end{itemize}
-    \item Anastasija dešifruje dobijenu šifrovanu poruku $M$ koristeći svoj privatni ključ.\begin{itemize}
-        \item Uzima jednokratni ključ $K=C_1^{X_A}\mod q$.
-        \item Izračunava originalnu poruku $M$ po formuli $M=(C_2K^{-1})\mod q$.
-    \end{itemize}
+    \item \emph {Javno su poznata dva cela broja - prost broj $q$ i njegov prost koren $\alpha$ koji je ceo broj}.
+    
+    \item \emph {Anastasija generiše par ključeva (privatni i javni).}
+    
+    Bira privatan ključ $X_A$, ali takav da je $1<X_A<q-1$ i izračunava javni ključ po formuli $Y_A=\alpha^X_A\mod q$. Privatni ključ je $X_A$, a javni ključ je ${q,\alpha,Y_A}$.
+    
+    \item \emph {Boban šifruje poruku koristeći Anastasijin javni ključ.}
+    
+        Predstavi poruku kao ceo broj $M$ iz domena $[0,q-1]$ i odabere proizvoljan ceo broj $k$ iz domena $[1,q-1]$. Izračunava privremeni ključ za jednokratnu upotrebu, po formuli: $K=Y_A^k\mod q$. Konačno, broj kojim je reprezentovana poruka šifruje kao par celih brojeva $(C1,C2)$, i to: $C1=\alpha^k \mod q$, i $C2=KM\mod q$.
+        
+    \item \emph {Anastasija dešifruje dobijenu šifrovanu poruku $M$ koristeći svoj privatni ključ.}
+    
+        Uzima jednokratni ključ $K=C_1^{X_A}\mod q$ i izračunava originalnu poruku $M$ po formuli $M=(C_2K^{-1})\mod q$.
 \end{enumerate}
 
  Dakle, Elgamalov algoritam sastoji se iz tri glavne tačke - generisanje ključa, enkripcija i dekripcija. U datom postupku, Boban želi neometano da pošalje poruku Anastasiji, diskretno i bez mešanja trećeg lica. Na prelazu između prvog i drugog koraka Anastasija šalje Bobanu javni ključ ${q,\alpha,Y_A}$ koji je sama formirala. Na prelazu između drugog i trećeg koraka Boban šalje Anastasiji uređeni par celih brojeva $(C1,C2)$ kojim je šifrovao poruku $M$ koju želi da joj pošalje. Na osnovu dobijenog para Anastasija prevodi poruku. 
