@@ -288,7 +288,7 @@ Razmenu tajne Anastasije i Bobana napadač želi da spreči, to može učiniti n
 \begin{itemize}
 \item Autsajder (eng. \emph{Outsider}) napad - I u ovom tipu napada napadač ometa DH protokol, ali na način na koji dobija informacije. On dodaje, briše, ponavlja poruke kako bi se domogao informacija do kojih ne može da dođe isključivo uz pomoć javnog ključa.
 \item Insider napad - Ukoliko Anastasija ili Boban odluči da objavi tajnu, to može učiniti time što će napraviti protokol koji se može lako razbiti odnosno svako ko vidi javni ključ može lako zaključiti šta je tajna.
-\item DoS (eng. \emph{Denial of Service}) - Napadač pokušava da omete izvršenje DH protokola onesposobljavanjem mreže, računara.
+\item DoS (eng. \emph{Denial of Service}) - Napadač pokušava da omete izvršenje DH protokola onesposobljavanjem mreže, računara. \cite{dhpaper}
 \end{itemize}
 
 
@@ -299,11 +299,11 @@ Aleksandar se sprema za napad. Kako je u mogućnosti da briše i postavlja poruk
 
 2. Aleksandar presreta poruku i dešifruje je. $g^{ab'}$ mu je poznata, tako da lako dolazi do poruke $m$.
 
-3. Aleksandar sprečava enkriptovanu poruku m da stigne do Bobana i umesto nje šalje $ENC_{g^{a'b}}(m')$ pri čemu $m'$ može biti bilo šta.
+3. Aleksandar sprečava enkriptovanu poruku m da stigne do Bobana i umesto nje šalje $ENC_{g^{a'b}}(m')$ pri čemu $m'$ može biti bilo šta. \cite{rb}
 
 Privatnost je narušena, a samim tim je i šema šifrovanja kompromitovana. Za ovaj tip napada Aleksandar mora da bude izuzetno moćan, ponaročito u situacijama kada autentifikacija postoji. Tada je potrebno da Aleksandar presreta i vrši izmenu nad svakom autentifikovanom porukom kako Anastasija i Boban ne bi primetili da je Aleksandar izvršio napad.
 
-Postoji još jedan oblik napada Čovek u Sredini. Ovaj oblik obuhvata samo priskluškivanje odnosno Aleksandar je u mogućnosti da vidi samo poruke. Glavni problem pri ovom napadu predstavlja računarska Diffie-Hellman pretpostavka (CDH) koja govori da za ciklični skup $G$ reda $q$ imamo $g$, $g^{a}$ i $g^{b}$ pri čemu su $g$ i $a, b\in$ \{0, 1,...,q - 1\}. Zbog činjenice da je računanje logaritma sa bazom $g$ u skupu $G$ sa proizvoljnim vrednostima teško dolazimo do zaključka da je CDH izuzetno komplikovan proces. Kada bi postojao efikasniji način da dođemo do vrednosti $a$ i $b$ postupak dešifrovanja poruka bi se sveo na sledeće korake: izračunavanje $a$ uzimanjem logaritamske vrednosti izraza $g^{a}$, a potom ubacivanje iste vrednosti u $g^{ab}$ tj. $(g^{b})^{log_g(g^{a})}$. 
+Postoji još jedan oblik napada Čovek u Sredini. Ovaj oblik obuhvata samo priskluškivanje odnosno Aleksandar je u mogućnosti da vidi samo poruke. Glavni problem pri ovom napadu predstavlja računarska Diffie-Hellman pretpostavka (CDH) koja govori da za ciklični skup $G$ reda $q$ imamo $g$, $g^{a}$ i $g^{b}$ pri čemu su $g$ i $a, b\in$ \{0, 1,...,q - 1\}. Zbog činjenice da je računanje logaritma sa bazom $g$ u skupu $G$ sa proizvoljnim vrednostima teško dolazimo do zaključka da je CDH izuzetno komplikovan proces. Kada bi postojao efikasniji način da dođemo do vrednosti $a$ i $b$ postupak dešifrovanja poruka bi se sveo na sledeće korake: izračunavanje $a$ uzimanjem logaritamske vrednosti izraza $g^{a}$, a potom ubacivanje iste vrednosti u $g^{ab}$ tj. $(g^{b})^{log_g(g^{a})}$. \cite{dlproblem}
 \subsection{Početnička greška}
 Ukoliko Anastasija ili Boban izabere $g^{a}=1$ odnosno $g^{b}=1$ onda će $g^{ab}$ biti jednako 1. S obzirom da je razmena tajnog ključa javna, svako ko vidi isti je u mogućnosti da uoči ovu grešku. Postoji i druga greška koja se može javiti, a to je kada je $g^{a}=g$. Jedna od prednosti koje RSA (Rivest–Shamir–Adleman) kriptosistem ima jeste zahtev da svako $a$ i $b$ zadovoljavaju uslov dužine $p$ odnosno $a,b\geq2^{p-1}$, pri čemu dužinu definišimo kao $k$ za koje broj $n$ zadovoljava $n\geq2^{k}$. 
 
@@ -374,6 +374,10 @@ Komunikacija na internetu bila bi potpuno nezamisliva bez postojanja kriptografi
 \bibitem{dlproblem} Kevin S. McCurley (1990). \emph{The Discrete Logarithm Problem}
 
 \bibitem{ddh-vs-cdh} A. Joux, K. Nguyen (2003). \emph{Separating Decision Diffie-Hellman from Computational Diffie-Hellman in Cryptographic Groups}
+
+\bibitem{dhpaper} J. F. Raymond, A. Stiglic (2000). \emph{Security Issues in the Diffie-Hellman Key Agreement Protocol}
+
+\bibitem{rb} L. Batina, J. Daemen (2021). \emph{Diffie-Hellman key agreement and ElGamal encryption}
 
 \end{thebibliography}
 
