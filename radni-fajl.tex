@@ -61,7 +61,7 @@ U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi
 \section{Algoritam}
 \label{sec:algoritam}
 
-Pre početka razmene ključeva, uspostavljaju se 2 javno poznata broja: $p$ i $g$.
+Pre početka razmene, uspostavljaju se 2 javno poznata broja: $p$ i $g$.
 \begin{itemize}
 
     \item $p$ - \emph{bezbedan prost broj} i modulo po kom radimo, preporuka je da 
@@ -75,7 +75,7 @@ Pre početka razmene ključeva, uspostavljaju se 2 javno poznata broja: $p$ i $g
     $q$ je Sofija Žermen prost (eng. \emph{Sophie Germain prime}). 
 \end{defn}
 Ovo je bitno kako bi se izbegao specifičan napad na Diffie-Hellman --- 
-Silver-Polig-Hellman algoritam (eng. \emph{Silver-Pohlig-Hellman algorithm}) \cite{pohlig-hellman}
+Silver-Polig-Hellman algoritam (eng. \emph{Silver-Pohlig-Hellman algorithm}) \cite{dhpaper}
 
 \begin{defn}
     \emph{Primitivni koren}: $g$ je primitivni koren po modulu $p$ ako za
@@ -298,7 +298,7 @@ Aleksandar se sprema za napad. Kako je u mogućnosti da briše i postavlja poruk
 
 2. Aleksandar presreta poruku i dešifruje je. $g^{ab'}$ mu je poznata, tako da lako dolazi do poruke $m$.
 
-3. Aleksandar sprečava enkriptovanu poruku m da stigne do Bobana i umesto nje šalje $ENC_{g^{a'b}}(m')$ pri čemu $m'$ može biti bilo šta. \cite{rb}
+3. Aleksandar sprečava enkriptovanu poruku m da stigne do Bobana i umesto nje šalje $ENC_{g^{a'b}}(m')$ pri čemu $m'$ može biti bilo šta. \cite{dhpaper}
 
 Privatnost je narušena, a samim tim je šema šifrovanja kompromitovana. Za ovaj tip napada Aleksandar mora da bude izuzetno moćan, posebno u situacijama kada autentifikacija postoji. Tada je potrebno da on presreta i vrši izmenu nad svakom autentifikovanom porukom kako Anastasija i Boban ne bi primetili da je Aleksandar izvršio napad.
 
@@ -351,7 +351,7 @@ Komunikacija na internetu bila bi potpuno nezamisliva bez postojanja kriptografi
 
 \bibitem{logjam} Adrian, David; et al. (October 2015). \emph{Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice}
 
-\bibitem{pohlig-hellman} Mollin, Richard (2006-09-18). \emph{An Introduction To Cryptography} (2nd ed.). Chapman and Hall/CRC. p. 344
+%\bibitem{pohlig-hellman} Mollin, Richard (2006-09-18). \emph{An Introduction To Cryptography} (2nd ed.). Chapman and Hall/CRC. p. 344
 
 \bibitem{dhstandard} E. Rescorla (June 1999). \emph{Diffie-Hellman Key Agreement Method}
 
@@ -363,7 +363,7 @@ Komunikacija na internetu bila bi potpuno nezamisliva bez postojanja kriptografi
 
 \bibitem{elgamal} T.Elgamal (1985). \emph{A public key cryptosystem and a signature scheme based on discrete logarithms}
 
-\bibitem{rb} L. Batina, J. Daemen (2021). \emph{Diffie-Hellman key agreement and ElGamal encryption}
+%\bibitem{rb} L. Batina, J. Daemen (2021). \emph{Diffie-Hellman key agreement and ElGamal encryption}
 
 \end{thebibliography}
 
