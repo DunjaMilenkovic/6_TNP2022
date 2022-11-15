@@ -215,15 +215,16 @@ Algoritam opisan u prethodnim poglavljima, primenjen na vrednostima konkretizova
 \begin{itemize}
   \item Neka je izabrani prost broj $q=353$.
   \item Prost koren za ovu vrednost je $\alpha=3$. 
-  \item Korisnik A bira tajni ključ $X_A=97$. \item Korisnik B bira tajni ključ $X_B=233$.
-  \item Korisnik A izračunava javni ključ $Y_A=3^{97}\mod353=40$.
-  \item Korisnik B izračunava javni ključ $Y_B=3^{233}\mod353=248$.
-  \item Korisnici A i B razmenjuju javne ključeve $Y_A$ i $Y_B$, nakon čega oba korisnika mogu da izračunaju tajni ključ $K$.
-  \item Korisnik A tajni ključ izračunava po formuli: $$K=(Y_B)^{X_A}\mod353=248^{97}\mod353=160$$
-  \item Korisnik B tajni ključ izračunava po formuli: $$K=(Y_A)^{X_B}\mod353=40^{233}\mod353=160$$
+  \item Anastasija bira tajni ključ $X_A=97$. 
+  \item Boban bira tajni ključ $X_B=233$.
+  \item Anastasija izračunava javni ključ $Y_A=3^{97}\mod353=40$.
+  \item Boban izračunava javni ključ $Y_B=3^{233}\mod353=248$.
+  \item Anastasija i Boban razmenjuju javne ključeve $Y_A$ i $Y_B$, nakon čega oboje mogu da izračunaju tajni ključ $K$.
+  \item Anastasija tajni ključ izračunava po formuli: $$K=(Y_B)^{X_A}\mod353=248^{97}\mod353=160$$
+  \item Boban tajni ključ izračunava po formuli: $$K=(Y_A)^{X_B}\mod353=40^{233}\mod353=160$$
 \end{itemize}
 
-Po samoj definiciji algoritma možemo slobodno pretpostaviti da napadač na raspolaganju ima samo podatke o vrednosti izabranog prostog broja i njegovog prostog korena, kao i vrednosti javnih ključeva korisnika A i B. Dakle, napadač zna da je: \\\centerline{$q=353$, $\alpha=3$, $Y_A=40$ i $Y_B=248$.}
+Po samoj definiciji algoritma možemo slobodno pretpostaviti da napadač na raspolaganju ima samo podatke o vrednosti izabranog prostog broja i njegovog prostog korena, kao i vrednosti Anastasijinog i Bobanovog javnog ključa. Dakle, napadač zna da je: \\\centerline{$q=353$, $\alpha=3$, $Y_A=40$ i $Y_B=248$.}
 
 S obzirom da su radi jednostavnosti izabrani brojevi u ovom primeru veoma mali, napadač može da pokuša i teorijski uspe da otkrije vrednost tajnog ključa $K$, primenjujući čistu metodu grube sile ("brute force").
 
@@ -231,11 +232,10 @@ Da bi napadač otkrio vrednost tajnog ključa $K$, neophodno je da otkrije bar j
 
 Metoda grube sile u ovom slučaju podrazumeva stepenovanje trojke sve dok dobijena vrednost po modulu 353 ne postane 40 ili 248.
 
-Jednačina biva zadovoljena kada je eksponent $a=97$. Sa ovim saznanjem, napadač izračunava vrednost tajnog ključa $K$ i dešifruje podatke deljene između korisnika A i B.
+Jednačina biva zadovoljena kada je eksponent $a=97$. Sa ovim saznanjem, napadač izračunava vrednost tajnog ključa $K$ i dešifruje podatke deljene između Anastasije i Bobana.
 
 Zbog ovoga se u Diffie-Hellman algoritmu koriste vrednosti koje su značajno veće. U tom slučaju razbijanje algoritma grubom silom postaje krajnje nepraktično.
  
-
 \section{ElGamalov sistem enkripcije}
 \label{sec:Elgamal}
 Nakon što su Diffie i Hellman uveli koncept kriptografije javnog ključa, mnogo istraživača pokušalo je da pronađe efikasniji sistem enkripcije zasnovan na Diffie-Hellman algoritmu (linkovi 6,7,9 iz originalnog rada). Za razliku od npr. RSA sistema (9) koji se oslanja na kompleksnost faktorisanja velikih celih brojeva, ElGamalov sistem zasnovan je na kompleksnosti izračunavanja vrednosti diskretnih logaritama.
