@@ -210,7 +210,7 @@ Ako znamo da rešimo komputacioni Diffie-Hellman problem, lako je rešiti odluč
 Obrnuto ne važi. \cite{ddh-vs-cdh}
 
 
-\subsection{Primer Diffie-Hellman algoritma na konkretnim vrednostima}
+\subsection{Primer Diffie-Hellman}
 \label{sec:primerDH}
 
 Algoritam opisan u prethodnim poglavljima, primenjen na vrednostima konkretizovanim kroz interakciju dva korisnika izgleda ovako:
@@ -268,8 +268,8 @@ Prema definiciji ElGamalovog algoritma, privremeni ključ za jednokratnu upotreb
 
 Boban formira uređeni par celih brojeva kojima šifruje poruku M. Po definiciji ElGamal algoritma, on će drugi broj formirati po formuli $C2=KM\mod q$. Anastasija če dobiti uređeni par i po definiciji će poruku dešifrovati formulom $M=(C_2K^{-1})\mod q$. Ukoliko u ovu formulu zamenimo formulu po kojoj Bobam formira vrednost $C_2$, dobija se izraz $M=((KM\mod q)K^{-1})\mod q=(KMK^{-1})\mod q=M\mod q=M$, čime je dokazano da Anastasija može da na osnovu dostupnih podataka dešifruje poruku koju joj je poslao Boban.
 
-\subsection{Primer ElGamal algoritma na konkretnim vrednostima}
-Algoritam opisan u prethodnim poglavljima, primenjen na vrednostima konkretizovanim kroz interakciju dva korisnika izgleda ovako:
+\subsection{Primer ElGamal}
+ElGamalov algoritam primenjen na vrednostima konkretizovanim kroz interakciju dva korisnika izgleda ovako:
 \begin{itemize}
   \item $q=19$, $\alpha=10$. 
   \item $X_A=5$, $Y_A=\alpha^{X_A}\mod q=10^5\mod 19=3$.
