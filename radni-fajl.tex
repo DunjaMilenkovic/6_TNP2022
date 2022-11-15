@@ -202,7 +202,7 @@ Takođe slična je i ElGamal enkripcija o kojoj će biti reči kasnije. Ona se o
 
 \begin{defn}
     Neka $a,b,c\in \mathbb{Z}\setminus q\mathbb{Z}$ i $A = g^a$, $B = g^b$. Sa verovatnoćom $\frac{1}{2}$ postavimo $C = g^c$, 
-    a inače $C = g^{ab}$. Odlučujući Diffie-Hellman problem (engl. \emph{Decisional Diffie-Hellman problem (DDH)}) je problem
+    a inače $C = g^{ab}$. \textbg{Odlučujući Diffie-Hellman problem} (engl. \emph{Decisional Diffie-Hellman problem (DDH)}) je problem
     odlučivanja da li je $C = g^{ab}$, ako znamo $\langle g \rangle$ i $A, B, C$.
 \end{defn}
 
@@ -292,17 +292,17 @@ Razmenu tajne Anastasije i Bobana napadač želi da spreči, to može učiniti n
 
 
 \subsection{Čovek u sredini}
-Aleksandar se sprema za napad. Kako je u mogućnosti da briše i postavlja poruke, on će spremiti dva ključa $g^{a'}$ i $g^{b'}$ koje će zameniti sa $g^{a}$ i $g^{b}$ redom. U slučaju kada nisu izvršili autentifikaciju Anastasija i Boban misle da imaju ispravne ključeve koje će koristiti da generišu $g^{ab}$. Pretpostavimo da Anastasija želi da pošalje poruku m, i da je $ENC_{K}(x)$ simetrična enkripcija od $x$ koristeći ključ $K$. Prikazaćemo kako se dalje odvija napad u tri koraka od kojih prva dva predstavljaju prisluškivanje, a u trećem koraku dolazi do zamene poruka.
+Aleksandar se sprema za napad. Kako je u mogućnosti da briše i postavlja poruke, on će spremiti dva ključa $g^{a'}$ i $g^{b'}$ koje će zameniti sa $g^{a}$ i $g^{b}$ redom. U slučaju kada nisu izvršili autentifikaciju Anastasija i Boban misle da imaju ispravne ključeve koje će koristiti da generišu $g^{ab}$. Pretpostavimo da Anastasija želi da pošalje poruku $m$, i da je $ENC_{K}(x)$ simetrična enkripcija od $x$ koristeći ključ $K$. Prikazaćemo kako se dalje odvija napad u tri koraka od kojih prva dva predstavljaju prisluškivanje, a u trećem koraku dolazi do zamene poruka.
 
-1. Anastasija šalje $ENC_{g^{ab}}$'$(m)$
+1. Anastasija šalje $ENC_{g^{ab'}}(m)$
 
 2. Aleksandar presreta poruku i dešifruje je. $g^{ab'}$ mu je poznata, tako da lako dolazi do poruke $m$.
 
-3. Aleksandar sprečava enkriptovanu poruku m da stigne do Bobana i umesto nje šalje $ENC_{g^{a'b}}(m')$ pri čemu $m'$ može biti bilo šta. \cite{dhpaper}
+3. Aleksandar sprečava enkriptovanu poruku $m$ da stigne do Bobana i umesto nje šalje $ENC_{g^{a'b}}(m')$ pri čemu $m'$ može biti bilo šta. \cite{dhpaper}
 
 Privatnost je narušena, a samim tim je šema šifrovanja kompromitovana. Za ovaj tip napada Aleksandar mora da bude izuzetno moćan, posebno u situacijama kada autentifikacija postoji. Tada je potrebno da on presreta i vrši izmenu nad svakom autentifikovanom porukom kako Anastasija i Boban ne bi primetili da je Aleksandar izvršio napad.
 
-Postoji još jedan oblik napada Čovek u Sredini. Ovaj oblik obuhvata samo priskluškivanje odnosno Aleksandar je u mogućnosti da vidi samo poruke. Glavni problem pri ovom napadu predstavlja računarska Diffie-Hellman pretpostavka (CDH) koja govori da za ciklični skup $G$ reda $q$ imamo $g$, $g^{a}$ i $g^{b}$ pri čemu su $g$ i $a, b\in$ \{0, 1,...,q - 1\}. Zbog činjenice da je računanje logaritma sa bazom $g$ u skupu $G$ sa proizvoljnim vrednostima teško dolazimo do zaključka da je CDH izuzetno komplikovan proces. Kada bi postojao efikasniji način da dođemo do vrednosti $a$ i $b$ postupak dešifrovanja poruka bi se sveo na sledeće korake: izračunavanje $a$ uzimanjem logaritamske vrednosti izraza $g^{a}$, a potom ubacivanje iste vrednosti u $g^{ab}$ tj. $(g^{b})^{log_g(g^{a})}$. \cite{dlproblem}
+Postoji još jedan oblik napada: čovek u sredini. Ovaj oblik obuhvata samo priskluškivanje odnosno Aleksandar je u mogućnosti da vidi samo poruke. Glavni problem pri ovom napadu predstavlja gore spomenut komputacioni Diffie-Hellman problem. Kada bi postojao efikasniji način da dođemo do vrednosti $a$ i $b$ postupak dešifrovanja poruka bi se sveo na sledeće korake: izračunavanje $a$ uzimanjem logaritamske vrednosti izraza $g^{a}$, a potom ubacivanje iste vrednosti u $g^{ab}$ tj. $(g^{b})^{log_g(g^{a})}$. \cite{dlproblem}
 Ukoliko Anastasija ili Boban izaberu $g^{a}=1$ odnosno $g^{b}=1$ onda će $g^{ab}$ biti jednako 1. S obzirom da je razmena tajnog ključa javna, svako ko vidi isti je u mogućnosti da uoči ovu grešku. Postoji i druga greška koja se može javiti, a to je kada je $g^{a}=g$. Jedna od prednosti koje RSA (Rivest–Shamir–Adleman) kriptosistem ima jeste zahtev da svako $a$ i $b$ zadovoljavaju uslov dužine $p$ odnosno $a,b\geq2^{p-1}$, pri čemu dužinu definišimo kao $k$ za koje broj $n$ zadovoljava $n\geq2^{k}$. 
 
 Pretpostavimo da su $a$ i $b$ ispravni i da $g^{ab}$ nije lako odrediti. Ukoliko proveru ne vrši biće sposobno da logički zaključi da se pojavila greška, već računar kod kojeg DH protokol nije ispravno implementiran onda napadač Veljko sa lakoćom presreta $g^{a}$ i $g^{b}$, i zamenjuje obe vrednosti sa $g^{v}=1$. Samim tim $g^{ab}=1$ i protokol je ranjiv samo ako računar ne detektuje grešku. Isti argument važi za vrednosti oblika $g^{\alpha*a*(p-1)}$ gde je $\alpha\geq1$
