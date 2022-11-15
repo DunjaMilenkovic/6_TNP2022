@@ -230,7 +230,7 @@ Po samoj definiciji algoritma možemo slobodno pretpostaviti da napadač na rasp
 
 S obzirom da su radi jednostavnosti izabrani brojevi u ovom primeru veoma mali, napadač može da pokuša i teorijski uspe da otkrije vrednost tajnog ključa $K$, primenjujući čistu metodu grube sile ("brute force").
 
-Da bi napadač otkrio vrednost tajnog ključa $K$, neophodno je da otkrije bar jednu vrednost koja će zadovoljavati jednačinu za izračunavanje tajnog ključa koju koriste korisnici. Koristeći informacije koje su mu poznate, napadač može da rekonstruiše kako igledaju te jednačine, a potom pokuša da ih reši metodom grube sile: \\\centerline{$Y_A=3^a\mod353=40$ ili $Y_B=3^b\mod353=248$.}
+Da bi napadač otkrio vrednost tajnog ključa $K$, neophodno je da otkrije bar jednu vrednost koja će zadovoljavati jednačinu za izračunavanje tajnog ključa koju koriste korisnici. Koristeći informacije koje su mu poznate, napadač može da rekonstruiše kako izgledaju te jednačine, a potom pokuša da ih reši metodom grube sile: \\\centerline{$Y_A=3^a\mod353=40$ ili $Y_B=3^b\mod353=248$.}
 
 Metoda grube sile u ovom slučaju podrazumeva stepenovanje trojke sve dok dobijena vrednost po modulu 353 ne postane 40 ili 248.
 
@@ -268,7 +268,7 @@ Prema definiciji ElGamalovog algoritma, privremeni ključ za jednokratnu upotreb
 
 Boban formira uređeni par celih brojeva kojima šifruje poruku M. Po definiciji ElGamal algoritma, on će drugi broj formirati po formuli $C2=KM\mod q$. Anastasija če dobiti uređeni par i po definiciji će poruku dešifrovati formulom $M=(C_2K^{-1})\mod q$. Ukoliko u ovu formulu zamenimo formulu po kojoj Bobam formira vrednost $C_2$, dobija se izraz $M=((KM\mod q)K^{-1})\mod q=(KMK^{-1})\mod q=M\mod q=M$, čime je dokazano da Anastasija može da na osnovu dostupnih podataka dešifruje poruku koju joj je poslao Boban.
 
-\subsection{Primer ElGamal}
+\subsection{ElGamal primer}
 ElGamalov algoritam primenjen na vrednostima konkretizovanim kroz interakciju dva korisnika izgleda ovako:
 \begin{itemize}
   \item $q=19$, $\alpha=10$. 
