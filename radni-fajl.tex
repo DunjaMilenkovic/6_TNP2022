@@ -324,20 +324,11 @@ Petrov cilj je da preoptereti server lažnim zahtevima koristeći činjenicu da 
 
 Diffie-Hellman algoritam ima široku primenu na različitim internet protokolima, od kojih su najvažniji SSL, SSH i IPSec, koji će biti detaljnije opisani u nastavku.
 
-\subsection{SSL}
-\label{subsec:ssl}
-
 SSL (skraćeno od eng. Secure Socket Layer) je protokol koji omogućava bezbednu onlajn komunikaciju između veb servera i pretraživača, koristeći upravo Diffie-Hellman algoritam \cite{use}. Sastoji se iz dva sloja: donjeg i gornjeg. Donji sloj omogućava privatnu i sigurnu komunikaciju koristeći TCP (skraćeno od eng. Transmission Control Protocol), koji se zasniva samo na simetričnoj kriptografiji. Upravo u gornjem sloju, koji se naziva i protokol rukovanja (eng. handshake protocol), koristi se Diffie-Hellman algoritam. On omogućava autentifikaciju servera klijentu, kao i korišćenje javnog ključa za ,,dogovaranje‘‘ o načinu šifrovanja i razmene ključeva koju će koristiti za komunikaciju \cite{use}. 
 
 %Jedna od najznačajnijih praktičnih primena SSL protokola odnosi se na osiguravanje onlajn transakcija kao što je npr. elektronsko bankarstvo.
 
-\subsection{SSH}
-\label{subsec:ssh}
-
 SSH (skraćeno od eng. Secure Shell) je protokol koji se koristi za osiguravanje internet veze između dva računara \cite{use}. Na ovaj način, omogućeno je bezbedno prijavljivanje sa jednog računara na neki drugi, udaljeni računar, vršenje komandi na udaljenom računaru, kao i prenos podataka između njih. Šifrovanje se odvija na sličan način kao u SSL protokolu.
-
-\subsection{IPSec}
-\label{subsec:ipsec}
 
 IPSec (skraćeno od eng. Internet Protocol Security) je protokol koji obezbeđuje komunikaciju između dve jedinice povezane IP mrežom \cite{use}. Dok prethodna dva protokola štite samo saobraćaj koji se odvija preko njih tj. njihovih aplikacija, IPSec funkcioniše za sve konekcije ostvarene između bilo koja dva računara u okviru IP mreže \cite{use}. Drugim rečima, IPSec podrzumeva transparentnu komunikaciju, u kojoj ni korisnici ni aplikacija ne moraju znati ništa o šifrovanju veze, što ga dovodi u prednost u odnosu na prethodno navedene protokole.
 \section{Zaključak}
