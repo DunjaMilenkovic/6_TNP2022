@@ -37,7 +37,7 @@
 	\end{itemize}
 \end{frame}
 
-\section*{}
+\section*{}         % ovo kreira "fantom" poglavlje
 
 \begin{frame}[fragile]\frametitle{Slajd 2}
 	 \begin{itemize}
@@ -46,35 +46,34 @@
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Slajd 3}
-    ovde ce ici tabela za algoritam
-\iffalse
     \begin{table}[h]
         \begin{center}
-        \begin{tabular}{ |c|c|c|c| }
-            \hline
-            Trenutni korak & Anastasija zna & Javno poznato & Boban zna \\
-            \hline
-            Početak algoritma &  & $g, p$ &  \\
-            \hline
-            \makecell{Svako računa\\svoj ključ} & $a, A=g^a \mod p $ & $g, p$ & $b, B=g^b \mod p$ \\
-            \hline
-            \makecell{Razmena\\javnih ključeva} & $a, A, B$ & $g, p, A, B$ & $b, B, A $ \\
-            \hline
-            \makecell{Svako računa isto, \\ tajno K} &
-            \makecell{{$\!\begin{aligned}
-                a, A, B,\\K=B^a \mod p\\=g^{ab} \mod p
-            \end{aligned}$} } &
-            \makecell{$g, p, A, B$} &
-            \makecell{{$\!\begin{aligned}
+        \resizebox{10cm}{!}{
+            \begin{tabular}{ |c|c|c|c| }
+                \hline
+                Trenutni korak & Anastasija zna & Javno poznato & Boban zna \\
+                \hline
+                Početak algoritma &  & $g, p$ &  \\
+                \hline
+                \makecell{Svako računa\\svoj ključ} & $a, A=g^a \mod p $ & $g, p$ & $b, B=g^b \mod p$ \\
+                \hline
+                \makecell{Razmena\\javnih ključeva} & $a, A, B$ & $g, p, A, B$ & $b, B, A $ \\
+                \hline
+                \makecell{Svako računa isto, \\ tajno K} &
+                \makecell{{$\!\begin{aligned}
+                    a, A, B,\\K=B^a \mod p\\=g^{ab} \mod p
+                \end{aligned}$} } &
+                \makecell{$g, p, A, B$} &
+                \makecell{{$\!\begin{aligned}
                 b, B, A,\\K=A^b \mod p\\=g^{ab} \mod p
-            \end{aligned}$}\\}\\
-            \hline
-        \end{tabular}
+                \end{aligned}$}\\}\\
+                \hline
+            \end{tabular}
+        }
         \caption{\textbf{Tajnost promenljivih u toku algoritma}}
         \label{table:tajnost_promenljivih}
         \end{center}
     \end{table}
-\fi
 
 \end{frame}
 
