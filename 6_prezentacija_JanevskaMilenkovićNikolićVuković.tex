@@ -92,9 +92,15 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Slajd 5}
+\begin{frame}[fragile]\frametitle{Slajd 5 - Primer Diffie-Hellman algoritma}
+        \small
 	\begin{itemize}	
-		\item ...
+		\item Neka je izabrani prost broj $q=353$. Prost koren za ovu vrednost je $\alpha=3$.
+            \item Tajni ključevi: $X_A=97$, $X_B=233$.
+            \item Javni ključevi: $Y_A=3^{97}\mod353=40$, \newline $Y_B=3^{233}\mod353=248$.
+            \item Razmena javnih ključeva $Y_A$ i $Y_B$; Izračunavanje tajnog ključa $K$.
+            \item Anastasija tajni ključ izračunava po formuli: $$K=(Y_B)^{X_A}\mod353=248^{97}\mod353=160$$
+            \item Boban tajni ključ izračunava po formuli: $$K=(Y_A)^{X_B}\mod353=40^{233}\mod353=160$$
 	\end{itemize}
 \end{frame}
 
