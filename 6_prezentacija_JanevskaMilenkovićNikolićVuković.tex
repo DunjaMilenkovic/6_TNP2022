@@ -32,23 +32,20 @@
 
 \addtocounter{framenumber}{-1}
 
-\section{Uvod}
+\section{Algoritam}
 
-\begin{frame}[fragile]\frametitle{Slajd 1}
+\begin{frame}[fragile]\frametitle{Osnove Diffie-Hellman algoritma}
 	\begin{itemize}
-		\item ...
+		\item kriptografija javnog ključa
+		\item Vitfild Difi i Martin Helman - "Novi pravci u kriptografiji"
+		\item dva ključa
+		\item jednosmerne matematičke funkcije
 	\end{itemize}
 \end{frame}
 
-\section*{}         % ovo kreira "fantom" poglavlje
+%\section*{}    %ovo kreira "fantom" poglavlje
 
-\begin{frame}[fragile]\frametitle{Slajd 2}
-	 \begin{itemize}
-		\item ...
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{Slajd 3 - Koraci Algoritma}
+\begin{frame}[fragile]\frametitle{Koraci Algoritma}
     \begin{table}[h]
         \begin{center}
         \resizebox{10cm}{!}{
@@ -73,13 +70,13 @@
                 \hline
             \end{tabular}
         }
-        \caption{Tajnost promenljivih u toku algoritma}
+        \caption{Šematski prikaz razmena promenljivih tokom algoritma}
         \end{center}
     \end{table}
 
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Slajd 4 - Problemi oslonci}
+\begin{frame}[fragile]\frametitle{Problemi oslonci}
     \small
     \emph{Sve u cikličnoj grupi $G$ reda $q$}
 	\begin{itemize}	
@@ -92,7 +89,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Slajd 5 - Primer Diffie-Hellman algoritma}
+\begin{frame}[fragile]\frametitle{Primer Diffie-Hellman algoritma}
         \small
 	\begin{itemize}	
 		\item Neka je izabrani prost broj $q=353$. Prost koren za ovu vrednost je $\alpha=3$.
@@ -110,8 +107,8 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Slajd 7 - Napadi}
-\section{Napadi}
+\begin{frame}[fragile]\frametitle{Napadi i primena}
+\section{Napadi i primena}
 	\begin{itemize}	
         \item Čovek u sredini 
         
@@ -121,10 +118,9 @@
 
         $g^{a} = 1$ tj. $g^{ab} = 1$ ; $g^a = g$
         \item DoS (eng. $Denial$ $of$ $Service$)
+        \item primene na bezbednosnim protokolima (SSL, SSH, IPSec)
 	\end{itemize}
 \end{frame}
-
-\section{Zaključak}
 
 \begin{frame}[fragile]\frametitle{Slajd 8}
 	\begin{itemize}	
