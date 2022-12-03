@@ -101,11 +101,23 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Slajd 6}
+\begin{frame}[fragile]\frametitle{Slajd 6 - ElGamal}
+        \footnotesize
 	\begin{itemize}	
-		\item ...
+        \itemsep0em
+		\item Zasnovan je na kompleksnosti izračunavanja vrednosti diskretnih logaritama.
+            \item Sastoji se iz tri glavne tačke - generisanje ključa, enkripcija i dekripcija.
+                    \item $q=19$, $\alpha=10$. 
+                    \item $X_A=5$, $Y_A=\alpha^{X_A}\mod q=10^5\mod 19=3$.
+                    \item $M=17$, $k=6$.
+                    \item $K=Y_A^k\mod q=3^6\mod 19=7$.
+                    \item $C1=\alpha^k \mod q=10^6\mod 19=5$.
+                     \item $C2=KM\mod q=7\cdot17\mod 19=5$
+                     \item $K=C_1^{X_A}\mod q=11^5\mod 19$
+                    \item $7\cdot K^{-1} \equiv 1 \mod 19 \implies K^{-1}=11$
+                    \item $M=(C_2K^{-1})\mod q=5\cdot 11 \mod 19=17$                
 	\end{itemize}
-\end{frame}
+\end{frame}}
 
 \begin{frame}[fragile]\frametitle{Napadi i primena}
 \section{Napadi i primena}
