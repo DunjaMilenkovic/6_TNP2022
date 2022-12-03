@@ -52,9 +52,9 @@ i predstavićemo način rada algoritma, njegova osnovna svojstva, primene, predn
 \section{Osnove Diffie-Hellman algoritma}
 Glavna klasifikacija kriptografskih algoritama deli ih na kriptografiju privatnog ključa (eng. secret key cryptography), kriptografiju javnog ključa (eng. public key cryptography) i heš funkcije (eng. hash functions) \cite{cryptography}. Kako je Diffie-Hellman protokol predstavnik asimetrične kriptografije, nju ćemo posebno izdvojiti i definisati.
 
-\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šifrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom ,,Novi pravci u kriptografiji‘‘ (eng. "New Directions in Cryptography"), 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. %Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
+\textbf{Kriptografija javnog ključa} ili \textbf{asimetrična kriptografija} podrazumeva korišćenje dva ključa – jednog za šifrovanje i drugog za dešifrovanje koda. „Tvorcima“ tj. pokretačima asimetrične kriptografije smatraju se \textbf{Whitfield Diffie} (Vitfild Difi) i \textbf{Martin Hellman} (Martin Helman), dok je Ralph Merkle (Ralf Merkl) takođe dao svoj doprinos ovoj oblasti radom na distribuciji javnog ključa \cite{Diffie-Hellman}. Njihova saradnja rezultirala je objavom zajedničkog rada pod nazivom ,,Novi pravci u kriptografiji‘‘ (eng. "New Directions in Cryptography"), novembra 1976. godine. U njemu su opisane osnove Diffie-Hellman algoritma, koji je upravo otud i dobio naziv. %Diffie i Hellman su 2015. godine dobili Tjuringovu nagradu za svoja dostignuća u oblasti kriptografije. 
 
-U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi dva ključa i tako omogućava korisnicima bezbednu komunikaciju bez potrebe za deljenjem privatnog ključa. Takođe, simetrična kriptografija omogućava postojanje autentifikacije pošiljaoca poruke. Osnovni princip po kome funkcioniše jeste korišćenje tzv. jednosmernih matematičkih funkcija (eng. one-way functions), koje se lako izračunavaju u jednom smeru, dok isto ne važi i za njihove inverzne funkcije \cite{cryptography}. Na ovaj način omogućeno je postojanje javnog ključa, bez rizika da ga treći korisnik koji nije predviđen kao deo mreže može zloupotrebiti. 
+U spomenutom radu, Diffie-Hellman algoritam opisan je kao algoritam koji koristi dva ključa i tako omogućava korisnicima bezbednu komunikaciju bez potrebe za deljenjem privatnog ključa. Takođe, simetrična kriptografija omogućava postojanje digitalnih potpisa tj. autentifikacije pošiljaoca poruke. Osnovni princip po kome funkcioniše jeste korišćenje tzv. jednosmernih matematičkih funkcija (eng. one-way functions), koje se lako izračunavaju u jednom smeru, dok isto ne važi i za njihove inverzne funkcije \cite{cryptography}. Na ovaj način omogućeno je postojanje javnog ključa, bez rizika da ga treći korisnik koji nije predviđen kao deo mreže može zloupotrebiti. 
 
 
 
@@ -145,7 +145,7 @@ Recimo da Anastasija i Boban žele da razmene ključeve.
         \end{aligned}$}\\}\\
         \hline
     \end{tabular}
-    \caption{\textbf{Šematski prikaz razmena promenljivih tokom algoritma} }
+    \caption{\textbf{Tajnost promenljivih u toku algoritma}}
     \label{table:tajnost_promenljivih}
     \end{center}
 \end{table}
@@ -161,8 +161,8 @@ problem koji se zove \emph{komputacioni Diffie-Hellman problem} (engl. \emph{com
 
 \begin{figure}[h]
 \centering
-    \includegraphics[scale=0.5, angle=90, origin=c]{Boje.jpg}
-\caption{\textbf{Slikoviti prikaz Diffie-Hellman algoritma}. Prve dve boje predstavljaju javno poznate promenljive g i p. Primenom dogovorene operacije (crvena i plava boja) na g i p, svako dobija tajnu novu boju (narandžasta i zelena). Nakon razmene ključeva, oboje će izvršiti sledeću dogovorenu operaciju i dobiti isto tajno K (braon boja). }
+    \includegraphics[scale=0.6, angle=0, origin=c]{Boje.jpg}
+\caption{\textbf{Slikoviti prikaz Diffie-Hellman algoritma}. Prve dve boje predstavljaju javno poznate promenljive g i p. Primenom dogovorene operacije (crvena i plava boja) na g i p, svako dobija tajnu novu boju (narandžasta i zelena). Nakon razmene ključeva, oboje će izvršiti sledeću dogovorenu operaciju i dobiti isto tajno K (braon boja).}
 \label{slika:boje}
 \end{figure}
 
